@@ -15,6 +15,12 @@ public class GeekDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	public List<Geek> getAllGeeks() {
+		String jpql = "SELECT geek FROM Geek as geek ";
+		TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
+		return query.getResultList();
+	}
 
 	public List<Geek> getAllGeek(char sexe) {
 		String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe";

@@ -54,6 +54,14 @@ public class Geek {
 		this.sexe = sexe;
 	}
 
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
 	public int getId() {
 		return id;
 	}
