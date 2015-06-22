@@ -4,15 +4,19 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Repository;
+
 import com.ninja_squad.geektic.model.Interet;
 
+@Repository
 public class InteretDao {
+	
 	@PersistenceContext
 	private EntityManager em;
 
 	 public List<Interet> getAllInteret()
 	 {
-         String jpql = "Select int from Interet as int";
+         String jpql = "Select i from Interet as i";
          TypedQuery<Interet> query = em.createQuery(jpql, Interet.class);
          return query.getResultList(); 
 	 }
@@ -21,4 +25,5 @@ public class InteretDao {
 	 {
          return em.find(Interet.class, id); 
 	 }
+
 }

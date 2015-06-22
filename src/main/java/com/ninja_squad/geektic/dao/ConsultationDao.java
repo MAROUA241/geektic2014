@@ -20,7 +20,6 @@ public class ConsultationDao {
 	 
 	 public void insertConsultation(int idGeek, String  adresseIp) 
 	 {
-
 		 java.util.Date date = new java.util.Date(); 
 		 
 		 Consultation maCons = new Consultation(adresseIp,idGeek,date);

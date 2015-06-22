@@ -1,7 +1,5 @@
 package com.ninja_squad.geektic.service;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,40 +13,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ninja_squad.geektic.dao.GeekDAO;
 import com.ninja_squad.geektic.model.Geek;
+import com.ninja_squad.geektic.model.Interet;
+
+@RestController
+@Transactional
+@RequestMapping("/Geeks")
+public class GeekService {
+
+	@Autowired
+	private GeekDAO lesGeeks;
 
 
-	@RestController
-	@Transactional
-	@RequestMapping("/Geeks")
-	public class GeekService {
-  
-		
-	        @Autowired
-	        private GeekDAO lesGeeks;
-	        
-	      
-	        @RequestMapping(method = RequestMethod.GET, params= "sexe")
-	        public List<Geek> getGeeksBySexe(@RequestParam("sexe") char sexe)
-	        {
-	            List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
-	            return MesGeeks;
-	        }
-	        
-	        @RequestMapping(method = RequestMethod.GET)
-	        public List<Geek> getGeeks()
-	        {
-	            List<Geek> MesGeeks = lesGeeks.getAllGeeks();
-	            return MesGeeks;
-	        }
-	        
-	        
-	        @RequestMapping(method = RequestMethod.GET,value = "/{id}")
-	        public Geek getGeekById(@PathVariable int id)
-	        {
-	            Geek monGeek= lesGeeks.getGeekById(id);
-	            return monGeek;
-	        }
+	@RequestMapping(method = RequestMethod.GET, params = "sexe")
+	public List<Geek> getGeeksBySexe(@RequestParam("sexe") char sexe) {
+		List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
+		return MesGeeks;
+	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Geek> getGeeks() {
+		List<Geek> MesGeeks = lesGeeks.getAllGeeks();
+		return MesGeeks;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	public Geek getGeekById(@PathVariable int id) {
+		Geek monGeek = lesGeeks.getGeekById(id);
+		return monGeek;
 	}
 
 
+}
