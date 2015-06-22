@@ -1,5 +1,7 @@
 package com.ninja_squad.geektic.config;
 
+import javax.annotation.PostConstruct;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -7,7 +9,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
-import javax.annotation.PostConstruct;
 
 /**
  * Component used to configure the MappingJackson2HttpMessageConverter with the customized ObjectMapper

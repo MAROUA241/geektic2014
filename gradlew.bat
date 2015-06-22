@@ -1,3 +1,4 @@
+@set GRADLE_USER_HOME=C:\Users\marou_000\Desktop\DS\gradlew-home
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
