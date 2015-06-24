@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import Enum.Sexe;
+
 @Entity
 @SequenceGenerator(name = "id", sequenceName = "geek_seq")
 @Table(name = "GEEK")
@@ -25,9 +27,10 @@ public class Geek {
 
 	@Column(name = "GRAVATAR")
 	private String urlGravatar;
-
+    
+	@Enumerated(EnumType.STRING)
 	@Column(name = "SEXE")
-	private String sexe;
+	private Sexe sexe;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "GEEK_INTERET", joinColumns = @JoinColumn(name = "IDGEEK"), inverseJoinColumns = @JoinColumn(name = "IDINTERET"))
@@ -45,7 +48,7 @@ public class Geek {
 	}
 
 	public Geek(String nom, String prenom, String mail, String urlGravatar,
-			String sexe) {
+			Sexe sexe) {
 
 		this.nom = nom;
 		this.prenom = prenom;
@@ -54,11 +57,11 @@ public class Geek {
 		this.sexe = sexe;
 	}
 
-	public String getSexe() {
+	public Sexe getSexe() {
 		return sexe;
 	}
 
-	public void setSexe(String sexe) {
+	public void setSexe(Sexe sexe) {
 		this.sexe = sexe;
 	}
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Geek</title>
+</head>
+<body ng-controller="HomeCtrl">
+
+	<h1 style="text-align: center;"> Trouver l'âme soeur !!! </h1> 
+	<br>
+	<br>
+	<div style="text-align: center;">
+		<a href="#/Geeks/m"><img src="/img/homme.png" alt="Homme"
+			style="width: 200px; height: 200px;" data-toggle="tooltip"
+			data-placement="top" title="Hommes"></a> <a href="#/Geeks/f"><img
+			src="/img/femme.png" alt="Femme" style="width: 200px; height: 200px;"
+			data-toggle="tooltip" data-placement="top" title="Femmes"></a>
+	</div>
+
+	<form name="search">
+		<dir class="row">
+			<dir class="col-md-4 text-right">
+				<h4 class="text-primary">
+					<span>Sexe : </span>
+				</h4>
+			</dir>
+			<dir class="col-md-1">
+				<input type="radio" ng-model="sexe" value="m"> Homme
+			</dir>
+			<dir class="col-md-1">
+				<input type="radio" ng-model="sexe" value="f"> Femme
+			</dir>
+		</dir>
+		<dir class="row">
+			<dir class="col-md-4 text-right">
+				<h4 class="text-danger">
+					<span>Interet : </span>
+				</h4>
+			</dir>
+			<dir class="col-md-4">
+				<select class="form-control text-primary text-center"
+					ng-model="monInteret"
+					ng-options="interet.nom for interet in interets">
+					<option value="">Choisi ton interet</option>
+				</select>
+			</dir>
+          
+		</dir>
+		<dir class="row">
+			<dir class="col-md-7">
+			</dir>
+			<dir class="col-md-1">
+				<button class="btn btn-success" ng-click="rechercher()">Rechercher</button>
+			</dir>
+		</dir>
+	</form>
+	</section>
+
+</body>
+</html>
+
+
+
+<script>
+	$('img').tooltip();
+</script>
+

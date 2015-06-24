@@ -1,0 +1,17 @@
+
+
+img.nav-header-img {
+  float: left;
+  height: 50px;
+  width :60px;
+  margin: -14px 5px 0 0;
+}
+td.colonne{
+	text-align:inherit;
+	width: 10%;
+	
+}
+td.valeur{
+	text-align:justify;
+	width:10%;
+}

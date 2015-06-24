@@ -9,31 +9,44 @@ import org.junit.Test;
 import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import Enum.Sexe;
+
+import com.ninja_squad.dbsetup.DbSetup;
+import com.ninja_squad.dbsetup.Operations;
+import com.ninja_squad.dbsetup.operation.Operation;
 import com.ninja_squad.geektic.model.Geek;
 
 public class GeekDaoTest extends BaseDaoTest {
 	
-	@Before
-	public void setup()
-	{
-		Geek geek = new Geek("Maroua","othman","maroua@hotmail.fr","","f");
-	}
 	@Autowired
-	private GeekDAO GeekTest;
+	GeekDAO dao;
+	
+	@Before
+    public void populateDatabase() {
+        Operation operation = Operations.sequenceOf(); // TODO define your operations here.
+        DbSetup dbSetup = new DbSetup(destination, operation);
+        dbSetup.launch();
+    }
 
 	@Test
-	public void testGetAllGeek() {
-
-		List<Geek> MaListe = GeekTest.getAllGeek('f');
-
-		assertEquals(MaListe.size(), 1);
-
+	public void testGetGeekBySexe() {
+		
+		List<Geek> maListe = dao.getGeekBySexe(Sexe.m);
+		assertEquals(maListe.size(), 2);
 	}
-
     @Test
 	public void testGetGeekById() {
-		Geek monGeek = Mockito.mock(Geek.class);
-		assertEquals(monGeek.getPrenom(), "Maroua");
+		Geek monGeek=dao.getGeekById(22);
+		assertEquals(monGeek.getPrenom(), "Alex");
 	}
-
+    @Test
+    public void testGetAllGeek() {
+    	List<Geek> maListe = dao.getAllGeeks();
+		assertEquals(maListe.size(),4);
+	}
+    @Test
+    public void testGetGeekBySexeAndInteret(){
+    	List<Geek> maListe = dao.findBySexeAndInteret(Sexe.m, "JAVA");
+		assertEquals(maListe.size(),1);
+	}
 }

@@ -2,66 +2,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Geek</title>
 </head>
 <body ng-controller="HomeCtrl">
 	<section >
 	
 		<br>
-		<h3 class="text-center text-success"> Trouvez le ou la bonne GEEK !!</h3>
+		<h3 class="text-center text-success"> Bienvenue sur le site des Geeks </h3>
 	</section>
-	<br>
-	<br>
-	<br>
-	<br>
 	
-	<section>
-		
-		<form name="search">
-	  		<dir class= "row">
-	  			<dir class="col-md-4 text-right">
-	  				<h4 class="text-primary"><span>Sexe : </span></h4>
-	  			</dir>
-	  			<dir class="col-md-1">
-		  			<input type="radio" ng-model="sexe" value="M"> Homme 
-	  			</dir>
-	  			<dir class="col-md-1">
-	  				<input type="radio" ng-model="sexe" value="F"> Femme
-	  			</dir>
-	  		</dir>
-	  		<br>
-	  		<dir class= "row">  			
-	  			<dir class="col-md-4 text-right">
-	  				<h4 class="text-danger"><span>Interet : </span></h4>
-	  			</dir>
-	  			<dir class="col-md-4">
-		  			<select class="form-control text-primary text-center" ng-model="monInteret" ng-options="interet.libelle for interet in interets">
-				      <option value=""> Choisi ton interet </option>
-				    </select>
-	  			</dir>
-	  			<dir class="col-md-4 bg-danger" ng-hide="cacher">
-	  				<p class=" text-danger"> Veuillez renseigner votre interet </p>
-	  			</dir>
-	  		</dir>
-	  		<br>
-	  		<dir class= "row">
-		  		<dir class="col-md-7">
-		  		</dir>		  		
-		  		<dir class="col-md-1">
-		  			<button class="btn btn-success" ng-click="rechercher()">Rechercher</button>
-		  		</dir>		  		
-	  		</dir>
-	  	</form>
-	</section>
-	<div style="text-align:center;">
-    
-    <a href="#/Geeks"> Afficher tous les geeks </a> 
-    <br>
-    <br>
-	<a href="#/Geeks/m" ><img src="/img/homme.png" alt="Homme" style="width : 300px; height : 300px;" data-toggle="tooltip" data-placement="top" title="Hommes"></a>
-	<a href="#/Geeks/f"><img src="/img/femme.png" alt="Femme" style="width : 300px; height : 300px;"  data-toggle="tooltip" data-placement="top" title="Femmes"></a>
-
-</div>
 	
 </body>
 </html>

@@ -27,5 +27,8 @@ public class ConsultationDao {
 		 em.persist(maCons);
 		 
 	 }
+
+		
+	
 }
 

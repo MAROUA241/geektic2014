@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import Enum.Sexe;
+
 import com.ninja_squad.geektic.dao.GeekDAO;
 import com.ninja_squad.geektic.model.Geek;
-import com.ninja_squad.geektic.model.Interet;
 
 @RestController
 @Transactional
@@ -23,11 +24,16 @@ public class GeekService {
 	@Autowired
 	private GeekDAO lesGeeks;
 
-
 	@RequestMapping(method = RequestMethod.GET, params = "sexe")
-	public List<Geek> getGeeksBySexe(@RequestParam("sexe") char sexe) {
-		List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
+	public List<Geek> getGeeksBySexe(@RequestParam("sexe") Sexe sexe) {
+		List<Geek> MesGeeks = lesGeeks.getGeekBySexe(sexe);
 		return MesGeeks;
+	}
+
+	@RequestMapping(value = "/{sexe}/{interet}", method = RequestMethod.GET)
+	public List<Geek> getGeekBySexeAndInteret(@PathVariable("sexe") Sexe sexe,
+			@PathVariable("interet") String interet) {
+		return lesGeeks.findBySexeAndInteret(sexe, interet);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -41,6 +47,5 @@ public class GeekService {
 		Geek monGeek = lesGeeks.getGeekById(id);
 		return monGeek;
 	}
-
 
 }

@@ -1,14 +1,16 @@
 package com.ninja_squad.geektic.dao;
 
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import Enum.Sexe;
+
 import com.ninja_squad.geektic.model.Geek;
-import com.ninja_squad.geektic.model.Interet;
 
 @Repository
 public class GeekDAO {
@@ -22,34 +24,26 @@ public class GeekDAO {
 		return query.getResultList();
 	}
 
-	public List<Geek> getAllGeek(char sexe) {
+	public List<Geek> getGeekBySexe(Sexe sexe) {
 		String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe";
 		TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-		query.setParameter("sexe", String.valueOf(sexe));
+		query.setParameter("sexe", sexe);
 		return query.getResultList();
 	}
-	public List<Geek> getGeekBySexe(char sexe) {
-		String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe";
+	
+	public List<Geek> findBySexeAndInteret(Sexe sexe, String interet){
+		String jpql = "select distinct g from Geek g left join fetch g.interets i inner join g.interets ir where g.sexe = :sexe and ir.nom = :interet";
 		TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-		query.setParameter("sexe", String.valueOf(sexe));
-		return query.getResultList();
+		query.setParameter("sexe", sexe);
+		query.setParameter("interet", interet);
+		List<Geek> list = query.getResultList();
+		return list;
 	}
-	public List<Geek> getGeekByInteret(Set<Interet> interets) {
-		String jpql = "SELECT geek FROM Geek as geek WHERE geek.interets=:interets";
-		TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-		query.setParameter("interets", String.valueOf(interets));
-		return query.getResultList();
-	}
-	public List<Geek> getGeekBySexeAndInteret(char sexe,Set<Interet> interets) {
-		String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe and geek.interets=:interets";
-		TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-		query.setParameter("sexe", String.valueOf(sexe));
-		return query.getResultList();
-	}
-
 
 	public Geek getGeekById(int id) {
 		return em.find(Geek.class, id);
 	}
+
+
 
 }
