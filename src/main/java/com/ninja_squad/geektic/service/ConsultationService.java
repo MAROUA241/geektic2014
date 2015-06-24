@@ -14,6 +14,7 @@ import com.ninja_squad.geektic.dao.ConsultationDao;
 @Transactional
 @RequestMapping("/Consultation")
 public class ConsultationService {
+	
 	@Autowired
 	private ConsultationDao daoConsultation;
 

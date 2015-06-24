@@ -34,7 +34,7 @@ app.controller('LeGeek', function($scope, $http, $routeParams) {
 	$http({url: '/Geeks/' +$routeParams.id,method: 'GET'
 	}).success(function(geekToShow) {
     	$scope.LeGeek = geekToShow;});	
-
+	
 	 $http.get('/Consultation/'+$routeParams.id).success(function(history) {
 	        $scope.visite = history;
 	    });
@@ -54,7 +54,7 @@ app.controller('AllGeeks', function($scope, $http) {
 	 $http.get('/Geeks').success(function(Geeks) {
 	        $scope.Geeks = Geeks;
 	 });
-	$scope.interets = {};
+	 $scope.interets = {};
 	$http.get('/interet').success(function(data) {
 	   $scope.interets = data;
 	 });

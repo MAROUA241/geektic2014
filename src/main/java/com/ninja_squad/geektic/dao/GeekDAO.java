@@ -15,9 +15,7 @@ import Enum.Sexe;
 
 import com.ninja_squad.geektic.model.Geek;
 
-@RestController
-@Transactional
-@RequestMapping("/Geeks")
+@Repository
 public class GeekDAO {
 
 	@PersistenceContext

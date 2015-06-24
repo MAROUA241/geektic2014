@@ -35,7 +35,9 @@ public class Geek {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "GEEK_INTERET", joinColumns = @JoinColumn(name = "IDGEEK"), inverseJoinColumns = @JoinColumn(name = "IDINTERET"))
 	private Set<Interet> interets;
-
+    
+	@ManyToMany(mappedBy = "geek")
+	
 	public Set<Interet> getInterets() {
 		return interets;
 	}

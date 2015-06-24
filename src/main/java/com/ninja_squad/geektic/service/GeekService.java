@@ -47,5 +47,6 @@ public class GeekService {
 		Geek monGeek = lesGeeks.getGeekById(id);
 		return monGeek;
 	}
+	
 
 }

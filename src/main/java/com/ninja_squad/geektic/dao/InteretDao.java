@@ -3,18 +3,14 @@ package com.ninja_squad.geektic.dao;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.ninja_squad.geektic.model.Interet;
 
 
-@RestController
-@Transactional
-@RequestMapping("/interet")
+
+@Repository
 public class InteretDao {
 	
 	@PersistenceContext
