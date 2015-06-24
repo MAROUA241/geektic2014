@@ -30,12 +30,14 @@ app.config(function($routeProvider){
 });
 
 app.controller('LeGeek', function($scope, $http, $routeParams) {
-	$http({
-		url: '/Geeks/' +$routeParams.id,
-		method: 'GET'
+	
+	$http({url: '/Geeks/' +$routeParams.id,method: 'GET'
 	}).success(function(geekToShow) {
-    	$scope.LeGeek = geekToShow;
-    });	
+    	$scope.LeGeek = geekToShow;});	
+
+	 $http.get('/Consultation/'+$routeParams.id).success(function(history) {
+	        $scope.visite = history;
+	    });
 })
 
 
@@ -52,7 +54,7 @@ app.controller('AllGeeks', function($scope, $http) {
 	 $http.get('/Geeks').success(function(Geeks) {
 	        $scope.Geeks = Geeks;
 	 });
-	 $scope.interets = {};
+	$scope.interets = {};
 	$http.get('/interet').success(function(data) {
 	   $scope.interets = data;
 	 });
@@ -67,16 +69,12 @@ app.controller('GetGeekBySexeAndInteret', function($scope, $http,$routeParams) {
 	}).success(function(geeksToShow) {
 		$scope.Geeks = geeksToShow;
     });	
-	
 
-
-	    
-	 
 });
 
 app.controller('HomeCtrl', function($scope, $http, $location) {
 	$scope.interets = {};
-	$scope.sexe = "f";
+	$scope.sexe = "m";
 	$scope.monInteret = "";
 	
 	$scope.cacher = true;
