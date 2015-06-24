@@ -19,14 +19,21 @@ import com.ninja_squad.geektic.model.Geek;
 public class GeekDaoTest extends BaseDaoTest {
 	
 	@Autowired
-	GeekDAO dao;
+    private GeekDAO dao;
 	
-	@Before
+    @Before
     public void populateDatabase() {
-        Operation operation = Operations.sequenceOf(); // TODO define your operations here.
+        Operation operation = Operations.sequenceOf(JeuxDeTest.INSERT_REFERENCE_DATA);
         DbSetup dbSetup = new DbSetup(destination, operation);
         dbSetup.launch();
     }
+	
+//	@Before
+//  public void populateDatabase() {
+//      Operation operation = Operations.sequenceOf(); // TODO define your operations here.
+//      DbSetup dbSetup = new DbSetup(destination, operation);
+//      dbSetup.launch();
+//  }
 
 	@Test
 	public void testGetGeekBySexe() {

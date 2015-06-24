@@ -15,12 +15,19 @@ public class InteretDaoTest extends BaseDaoTest {
 	@Autowired
 	InteretDao dao;
 	
-	@Before
-    public void populateDatabase() {
-        Operation operation = Operations.sequenceOf(); // TODO define your operations here.
-        DbSetup dbSetup = new DbSetup(destination, operation);
-        dbSetup.launch();
-    }
+	 @Before
+	    public void populateDatabase() {
+	        Operation operation = Operations.sequenceOf(JeuxDeTest.INSERT_REFERENCE_DATA);
+	        DbSetup dbSetup = new DbSetup(destination, operation);
+	        dbSetup.launch();
+	    }
+	
+//	@Before
+//    public void populateDatabase() {
+//        Operation operation = Operations.sequenceOf(); // TODO define your operations here.
+//        DbSetup dbSetup = new DbSetup(destination, operation);
+//        dbSetup.launch();
+//    }
 	
 	@Test
 	public void retourneTousLesInterets(){

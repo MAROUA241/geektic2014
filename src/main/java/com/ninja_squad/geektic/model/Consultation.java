@@ -3,10 +3,10 @@ package com.ninja_squad.geektic.model;
 import java.util.Date;
 
 
+
 import javax.persistence.*;
 @Entity
 @Table(name="CONSULTATION")
-
 public class Consultation
 {
 	
